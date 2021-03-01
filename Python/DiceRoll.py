@@ -3,10 +3,10 @@
 # imports of external packages to use in our code
 import sys
 import numpy as np
-
+from fractions import Fraction 
 # import our Random class from python/Random.py file
 sys.path.append(".")
-from Random import Random
+from Random2 import Random
 
 # main function for our coin toss Python code
 if __name__ == "__main__":
@@ -19,11 +19,16 @@ if __name__ == "__main__":
     # default seed
     seed = 5555
 
-    # default single coin-toss probability for "1"
-    prob = 0.5
+    # default dice roll  probability for "1"
+    prob1 = Fraction(1,6)
+    prob2 = Fraction(1,6)
+    prob3 = Fraction(1,6)
+    prob4 = Fraction(1,6)
+    prob5 = Fraction(1,6)
+    prob6 = Fraction(1,6)
 
-    # default number of coin tosses (per experiment)
-    Ntoss = 1
+    # default number of rolls (per experiment)
+    Nroll = 1
 
     # default number of experiments
     Nexp = 1
@@ -35,16 +40,41 @@ if __name__ == "__main__":
     if '-seed' in sys.argv:
         p = sys.argv.index('-seed')
         seed = sys.argv[p+1]
-    if '-prob' in sys.argv:
-        p = sys.argv.index('-prob')
+    if '-prob1' in sys.argv:
+        p = sys.argv.index('-prob1')
         ptemp = float(sys.argv[p+1])
         if ptemp >= 0 and ptemp <= 1:
-            prob = ptemp
-    if '-Ntoss' in sys.argv:
-        p = sys.argv.index('-Ntoss')
+            prob1 = ptemp
+    if '-prob2' in sys.argv:
+        p = sys.argv.index('-prob2')
+        ptemp = float(sys.argv[p+1])
+        if ptemp >= 0 and ptemp <= 1:
+            prob2 = ptemp
+    if '-prob3' in sys.argv:
+        p = sys.argv.index('-prob3')
+        ptemp = float(sys.argv[p+1])
+        if ptemp >= 0 and ptemp <= 1:
+            prob3 = ptemp
+    if '-prob4' in sys.argv:
+        p = sys.argv.index('-prob4')
+        ptemp = float(sys.argv[p+1])
+        if ptemp >= 0 and ptemp <= 1:
+            prob4 = ptemp
+    if '-prob5' in sys.argv:
+        p = sys.argv.index('-prob5')
+        ptemp = float(sys.argv[p+1])
+        if ptemp >= 0 and ptemp <= 1:
+            prob5 = ptemp
+    if '-prob6' in sys.argv:
+        p = sys.argv.index('-prob6')
+        ptemp = float(sys.argv[p+1])
+        if ptemp >= 0 and ptemp <= 1:
+            prob6 = ptemp
+    if '-Nroll' in sys.argv:
+        p = sys.argv.index('-Nroll')
         Nt = int(sys.argv[p+1])
         if Nt > 0:
-            Ntoss = Nt
+            Nroll = Nt
     if '-Nexp' in sys.argv:
         p = sys.argv.index('-Nexp')
         Ne = int(sys.argv[p+1])
@@ -61,12 +91,12 @@ if __name__ == "__main__":
     if doOutputFile:
         outfile = open(OutputFileName, 'w')
         for e in range(0,Nexp):
-            for t in range(0,Ntoss):
-                outfile.write(str(random.Bernoulli(prob))+" ")
+            for t in range(0,Nroll):
+                outfile.write(str(random.Diceroll(prob1,prob2,prob3,prob4,prob5,prob6))+" ")
             outfile.write(" \n")
         outfile.close()
     else:
         for e in range(0,Nexp):
-            for t in range(0,Ntoss):
-                print(random.Bernoulli(prob), end=' ')
+            for t in range(0,Nroll):
+                print(random.Diceroll(prob1,prob2,prob3,prob4,prob5,prob6), end=' ')
             print(" ")
