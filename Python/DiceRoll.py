@@ -8,7 +8,7 @@ from fractions import Fraction
 sys.path.append(".")
 from Random2 import Random
 
-# main function for our coin toss Python code
+# main function for our dice roll Python code
 if __name__ == "__main__":
     # if the user includes the flag -h or --help print the options
     if '-h' in sys.argv or '--help' in sys.argv:
@@ -36,7 +36,7 @@ if __name__ == "__main__":
     # output file defaults
     doOutputFile = False
 
-    # read the user-provided seed from the command line (if there)
+    # read the user-provided seed from the command line and change dice probabilities (if there)
     if '-seed' in sys.argv:
         p = sys.argv.index('-seed')
         seed = sys.argv[p+1]

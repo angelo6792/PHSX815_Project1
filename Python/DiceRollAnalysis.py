@@ -9,7 +9,7 @@ from sklearn import preprocessing
 # import our Random class from python/Random.py file
 sys.path.append(".")
 
-# main function for our CookieAnalysis Python code
+# main function for our DiceRollAnalysis Python code
 if __name__ == "__main__":
    
     haveInput = False
@@ -37,12 +37,13 @@ if __name__ == "__main__":
     H1 =sys.argv[H1+1]
 
 
-#split rolls and sort
+#loads text and put text into an array for the LLR graph
 RollsH0 = np.loadtxt(H0)
 RollsH1 = np.loadtxt(H1)
 print(len(RollsH0),len(RollsH1))
 a0 = []
 a1 = []
+               #have to manually change range to match Nexp. Not sure how to get it to change from command line
 for j in range(0,100000):
     LLR0 = 0
     for l in range(0,10):
@@ -101,13 +102,17 @@ for j in range(0,100000):
            LLR1 = LLR1-math.log(1/6)
     a1.append(LLR1)
 
-
+#flatten data files and sorts them for probability graph
 RollH0 = RollsH0.flatten()
 RollH1 = RollsH1.flatten()
 RollH0.sort()
 RollH1.sort()
+
+#calculates the alpha of our experiment
 Alpha = .05
 a =len(a0)-int(len(a0)*Alpha)
+
+#probability distribution graph
 density0, bins0 =np.histogram(RollH0,bins=np.arange(8)-0.5, density = True)
 density1, bins1 =np.histogram(RollH1,bins=np.arange(8)-0.5, density = True)
 unity_density0 = density0 / density0.sum()
@@ -124,6 +129,7 @@ ax.set_ylabel('Probability')
 ax.set_title('Probability distribution for a single diceroll')
 ax.legend(['fair dice','unfair dice'])
 
+#LLR graph
 plt.figure()
 plt.hist(a0,10, alpha=.75, color='blue')
 plt.hist(a1,10, alpha=.75, color='green')
