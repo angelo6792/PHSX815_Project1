@@ -52,13 +52,13 @@ for j in range(0,100000):
         elif RollsH0[j][l] == 2:
            LLR0 = LLR0+math.log(1/10)
         elif RollsH0[j][l] == 3:
-           LLR0 = LLR0+math.log(1/5)
+           LLR0 = LLR0+math.log(1/10)
         elif RollsH0[j][l] == 4:
-           LLR0 = LLR0+math.log(1/5)
+           LLR0 = LLR0+math.log(2/10)
         elif RollsH0[j][l] == 5:
-           LLR0 = LLR0+math.log(1/5)
+           LLR0 = LLR0+math.log(2/10)
         elif RollsH0[j][l] == 6:
-           LLR0 = LLR0+math.log(1/5)
+           LLR0 = LLR0+math.log(3/10)
         if RollsH0[j][l] == 1:
            LLR0 = LLR0-math.log(1/6)
         elif RollsH0[j][l] == 2:
@@ -81,13 +81,13 @@ for j in range(0,100000):
         elif RollsH1[j][l] == 2:
            LLR1 = LLR1+math.log(1/10)
         elif RollsH1[j][l] == 3:
-           LLR1 = LLR1+math.log(1/5)
+           LLR1 = LLR1+math.log(1/10)
         elif RollsH1[j][l] == 4:
-           LLR1 = LLR1+math.log(1/5)
+           LLR1 = LLR1+math.log(2/10)
         elif RollsH1[j][l] == 5:
-           LLR1 = LLR1+math.log(1/5)
+           LLR1 = LLR1+math.log(2/10)
         elif RollsH1[j][l] == 6:
-           LLR1 = LLR1+math.log(1/5)
+           LLR1 = LLR1+math.log(3/10)
         if RollsH1[j][l] == 1:
            LLR1 = LLR1-math.log(1/6)
         elif RollsH1[j][l] == 2:
@@ -138,7 +138,7 @@ plt.legend (['λ = -0.98','H0','H1'],loc = 'upper left' )
 plt.xlabel('log(L$_H$$_1$/L$_H$$_0$)')
 plt.ylabel('Frequency of number')
 plt.title('LLR (10 rolls per experiment, 100000 exp)')
-plt.text(-5.3, 24000,'a = 0.5', color = 'blue')
-plt.text(-5.3, 23000,'b = 0.0034 ', color = 'green')
+plt.text(-5.3, 20000,'a = 0.5', color = 'blue')
+plt.text(-5.3, 19000,'b = 0.0034 ', color = 'green')
 plt.show()
 
